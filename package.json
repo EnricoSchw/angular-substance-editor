@@ -1,0 +1,30 @@
+{
+  "name": "angular-substance-editor",
+  "version": "0.0.1",
+  "description": "AngularJS directive for Substance.io editor",
+  "keywords": [
+    "angular",
+    "substance-editor"
+  ],
+  "homepage": "https://github.com/thijsw/angular-substance-editor",
+  "bugs": "https://github.com/thijsw/angular-substance-editor/issues",
+  "author": {
+    "name": "Enrico Schwendig",
+    "email": "enrico.schwe@googlemail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thijsw/angular-substance-editor.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.14.0",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0"
+  },
+  "dependencies": {
+    "substance": "^1.0.0-beta.3"
+  }
+}

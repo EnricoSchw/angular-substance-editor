@@ -1,0 +1,16 @@
+{
+  "name": "angular-substance-editor",
+  "version": "0.0.1",
+  "main": "./dist/angular-substance-editor.js",
+  "ignore": [
+    "**/.*",
+    "*.md",
+    "gulpfile.js",
+    "package.json",
+    "src",
+    "demo"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8"
+  }
+}
