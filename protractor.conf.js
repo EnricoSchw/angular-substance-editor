@@ -1,6 +1,6 @@
 /*jshint node: true*/
 /*global exports: true*/
-
+var HtmlReporter = require('protractor-html-screenshot-reporter');
 // An example configuration file.
 // https://raw.github.com/angular/protractor/master/example/conf.js
 exports.config = {
@@ -10,9 +10,7 @@ exports.config = {
     //seleniumAddress: 'http://localhost:4444/wd/hub',
   // Capabilities to be passed to the webdriver instance.
   capabilities: {
-    'browserName': 'phantomjs',
-    'phantomjs.binary.path': require('phantomjs-prebuilt').path,
-    'phantomjs.ghostdriver.cli.args': ['--loglevel=DEBUG']
+    'browserName': 'chrome'
   },
 
   // Options to be passed to Jasmine-node.
@@ -22,11 +20,10 @@ exports.config = {
   },
 
   //directConnect: true,
-
-  baseUrl: 'http://localhost:9001/',
   onPrepare: function() {
-        browser.ignoreSynchronization = true;
         browser.driver.manage().window().setSize(1280, 1024);
-
+        jasmine.getEnv().addReporter(new HtmlReporter({
+         baseDirectory: '/tmp/screenshots'
+      }));
     }
 };

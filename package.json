@@ -32,6 +32,7 @@
     "gulp-uglify": "^2.0.0",
     "node-sass": "^3.8.0",
     "phantomjs-prebuilt": "2.1.7",
+    "protractor-html-screenshot-reporter": "0.0.21",
     "run-sequence": "^1.2.2",
     "selenium-server-standalone-jar": "^2.53.1",
     "through2": "^2.0.1",

@@ -1,13 +1,10 @@
-
+// at the top of the test spec:
 describe('The test page', function () {
   it('should load the editor', function () {
-    browser.driver.get('/');
+    browser.driver.get('http://localhost:9001/index.html');
     browser.waitForAngular();
 
-
     var editor = element(by.className('sc-prose-editor'));
-    //var editor = element(by.className('Enrico'));
-    //browser.wait(editor.isPresent(), 5 * 1000, 'Server should start within 5 seconds');
     expect(editor.isPresent()).toBe(true);
   });
 

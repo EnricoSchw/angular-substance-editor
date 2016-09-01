@@ -56,7 +56,6 @@ gulp.task('protractor', ['webdriver_update', 'e2etests:server'], function(cb) {
 });
 
 gulp.task('e2etests:server', function(cb) {
-  console.log('hallo?');
 	server.listen(9001, cb);
 });
 
