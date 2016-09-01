@@ -43,8 +43,7 @@
   "scripts": {
     "gulp": "node node_modules/gulp/bin/gulp.js --type ci",
     "test": "npm run gulp protractor",
-    "bundle": "gulp",
-    "postinstall": "webdriver-manager update"
+    "bundle": "gulp"
   },
   "dependencies": {
     "babelify": "^7.3.0",
