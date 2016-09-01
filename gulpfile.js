@@ -41,7 +41,7 @@ gulp.task('webdriver_standalone', webdriver_standalone);
 
 
 // Setting up the test task
-gulp.task('protractor', ['e2etests:server'], function(cb) {
+gulp.task('protractor', ['webdriver_update', 'e2etests:server'], function(cb) {
 
     gulp.src(['tests/e2e/**/*.js'], { read:false })
   		.pipe(protractor({
