@@ -10,12 +10,23 @@ exports.config = {
     //seleniumAddress: 'http://localhost:4444/wd/hub',
   // Capabilities to be passed to the webdriver instance.
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'phantomjs',
+    'phantomjs.binary.path': require('phantomjs-prebuilt').path,
+    'phantomjs.ghostdriver.cli.args': ['--loglevel=DEBUG']
   },
 
   // Options to be passed to Jasmine-node.
   jasmineNodeOpts: {
     showColors: true,
     defaultTimeoutInterval: 30000
-  }
+  },
+
+  //directConnect: true,
+
+  baseUrl: 'http://localhost:9001/',
+  onPrepare: function() {
+        browser.ignoreSynchronization = true;
+        browser.driver.manage().window().setSize(1280, 1024);
+
+    }
 };

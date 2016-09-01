@@ -19,7 +19,7 @@ var config = require('./gulp/config');
 // The protractor task
 var server = http.createServer(express().use(express.static(__dirname + '/demo/')));
 var isCI = args.type === 'ci';
- console.log(args.type);
+
 // Tests Setup: ################################################################################
 
 // Downloads the selenium webdriver
@@ -56,6 +56,7 @@ gulp.task('protractor', ['webdriver_update', 'e2etests:server'], function(cb) {
 });
 
 gulp.task('e2etests:server', function(cb) {
+  console.log('hallo?');
 	server.listen(9001, cb);
 });
 

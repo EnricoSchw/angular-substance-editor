@@ -31,6 +31,7 @@
     "gulp-sass": "^2.3.2",
     "gulp-uglify": "^2.0.0",
     "node-sass": "^3.8.0",
+    "phantomjs-prebuilt": "2.1.7",
     "run-sequence": "^1.2.2",
     "selenium-server-standalone-jar": "^2.53.1",
     "through2": "^2.0.1",
@@ -42,7 +43,8 @@
   "scripts": {
     "gulp": "node node_modules/gulp/bin/gulp.js --type ci",
     "test": "npm run gulp protractor",
-    "bundle": "gulp"
+    "bundle": "gulp",
+    "postinstall": "webdriver-manager update"
   },
   "dependencies": {
     "babelify": "^7.3.0",
