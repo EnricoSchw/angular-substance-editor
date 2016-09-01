@@ -40,7 +40,7 @@
     "node": "^4.3"
   },
   "scripts": {
-    "gulp": "node node_modules/gulp/bin/gulp.js",
+    "gulp": "node node_modules/gulp/bin/gulp.js --type ci",
     "test": "npm run gulp protractor",
     "bundle": "gulp"
   },

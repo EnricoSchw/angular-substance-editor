@@ -19,7 +19,7 @@ var config = require('./gulp/config');
 // The protractor task
 var server = http.createServer(express().use(express.static(__dirname + '/demo/')));
 var isCI = args.type === 'ci';
-
+ console.log(args.type);
 // Tests Setup: ################################################################################
 
 // Downloads the selenium webdriver
