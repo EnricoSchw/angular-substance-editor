@@ -4,32 +4,23 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     through2 = require('through2'),
     sass = require('gulp-sass'),
-    rename = require('gulp-rename');
+    bower = require('gulp-bower'),
+    rename = require('gulp-rename'),
+    runSequence = require('run-sequence')
+    protractor = require('gulp-protractor').protractor,
+    webdriver_standalone = require('gulp-protractor').webdriver_standalone,
+    webdriver_update = require('gulp-protractor').webdriver_update,
+    args = require('yargs').argv,
+    express = require('express'),
+    http = require('http');
 
 
 var config = require('./gulp/config');
-
-
-
-
-// ################################################################################
-
 // The protractor task
-var protractor = require('gulp-protractor').protractor;
-
-// Start a standalone server
-var webdriver_standalone = require('gulp-protractor').webdriver_standalone;
-
-// Download and update the selenium driver
-var webdriver_update = require('gulp-protractor').webdriver_update;
-
-
-var args = require('yargs').argv;
-var express = require('express');
-var http = require('http');
 var server = http.createServer(express().use(express.static(__dirname + '/demo/')));
 var isCI = args.type === 'ci';
 
+// Tests Setup: ################################################################################
 
 // Downloads the selenium webdriver
 gulp.task('webdriver_update', webdriver_update);
@@ -38,7 +29,6 @@ gulp.task('webdriver_update', webdriver_update);
 // NOTE: This is not needed if you reference the
 // seleniumServerJar in your protractor.conf.js
 gulp.task('webdriver_standalone', webdriver_standalone);
-
 
 // Setting up the test task
 gulp.task('protractor', ['webdriver_update', 'e2etests:server'], function(cb) {
@@ -65,28 +55,11 @@ gulp.task('protractor', ['webdriver_update', 'e2etests:server'], function(cb) {
 
 });
 
-
 gulp.task('e2etests:server', function(cb) {
 	server.listen(9001, cb);
 });
 
-
-//################################################################################
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Build setup ################################################################################
 
 // process JS files and return the stream.
 gulp.task('js', function () {
@@ -135,8 +108,18 @@ gulp.task('sass', function () {
         .pipe(browserSync.stream());
 });
 
+
+gulp.task('bower', function() {
+  return bower();
+});
+
+gulp.task('build', function () {
+    runSequence('bower', 'browserify', 'sass', 'assets');
+});
+
+
 // use default task to launch Browsersync and watch JS files
-gulp.task('serve', ['browserify', 'sass', 'assets'], function () {
+gulp.task('serve', ['build'], function () {
 
     // Serve files from the root of this project
     browserSync.init({
@@ -150,7 +133,6 @@ gulp.task('serve', ['browserify', 'sass', 'assets'], function () {
     // all browsers reload after tasks are complete.
     gulp.watch("./src/*.js", ['js-watch']);
 });
-
 
 gulp.task('assets', function () {
 

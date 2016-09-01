@@ -1,10 +1,12 @@
-# angular-substance-editor
+# angular-substance-editor [![Build Status](https://travis-ci.org/EnricoSchw/angular-substance-editor.svg?branch=master)](https://travis-ci.org/EnricoSchw/angular-substance-editor)
+
 AngularJS directive for substance.io editor
 
 
 ## Install
 
 Install with [Bower](https://bower.io/):
+
 ```sh
 $ bower install --save angular-substance-editor
 ```

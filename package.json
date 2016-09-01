@@ -21,18 +21,20 @@
     "ace-builds": "^1.2.5",
     "browser-sync": "^2.14.3",
     "browserify": "^13.1.0",
+    "express": "^4.14.0",
     "font-awesome": "^4.6.3",
     "gulp": "^3.9.1",
+    "gulp-bower": "0.0.13",
     "gulp-browserify": "^0.5.1",
     "gulp-protractor": "^3.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
     "gulp-uglify": "^2.0.0",
     "node-sass": "^3.8.0",
+    "run-sequence": "^1.2.2",
     "selenium-server-standalone-jar": "^2.53.1",
     "through2": "^2.0.1",
-    "yargs": "^5.0.0",
-    "express": "^4.14.0"
+    "yargs": "^5.0.0"
   },
   "engines": {
     "node": "^4.3"
