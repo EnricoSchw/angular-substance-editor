@@ -9,6 +9,85 @@ var gulp = require('gulp'),
 
 var config = require('./gulp/config');
 
+
+
+
+// ################################################################################
+
+// The protractor task
+var protractor = require('gulp-protractor').protractor;
+
+// Start a standalone server
+var webdriver_standalone = require('gulp-protractor').webdriver_standalone;
+
+// Download and update the selenium driver
+var webdriver_update = require('gulp-protractor').webdriver_update;
+
+
+var args = require('yargs').argv;
+var express = require('express');
+var http = require('http');
+var server = http.createServer(express().use(express.static(__dirname + '/demo/')));
+var isCI = args.type === 'ci';
+
+
+// Downloads the selenium webdriver
+gulp.task('webdriver_update', webdriver_update);
+
+// Start the standalone selenium server
+// NOTE: This is not needed if you reference the
+// seleniumServerJar in your protractor.conf.js
+gulp.task('webdriver_standalone', webdriver_standalone);
+
+
+// Setting up the test task
+gulp.task('protractor', ['e2etests:server'], function(cb) {
+
+    gulp.src(['tests/e2e/**/*.js'], { read:false })
+  		.pipe(protractor({
+  			configFile: './protractor.conf.js',
+  			args: ['--baseUrl', 'http://' + server.address().address + ':' + server.address().port]
+  		})).on('error', function(e) {
+  			server.close();
+  			if(isCI) {
+  				throw e;
+  			} else {
+  				console.log(e);
+  			}
+  			cb();
+  		}).on('end', function() {
+  			server.close();
+  			cb();
+  		});
+
+
+
+
+});
+
+
+gulp.task('e2etests:server', function(cb) {
+	server.listen(9001, cb);
+});
+
+
+//################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // process JS files and return the stream.
 gulp.task('js', function () {
     return gulp.src([config.jsSrc, './node_modules'])
@@ -17,10 +96,8 @@ gulp.task('js', function () {
         .pipe(gulp.dest(config.dist));
 });
 
-
-////############
 gulp.task('browserify', function () {
-    return gulp.src(config.jsSrc)
+    return gulp.src(config.jsSrc + '/angular-substance-editor.js')
         .pipe(through2.obj(function (file, enc, next) {
             browserify(file.path)
                 .bundle(function (err, res) {
@@ -41,8 +118,6 @@ gulp.task('browserify', function () {
         .pipe(gulp.dest(config.dist));
 
 });
-////############
-
 
 // create a task that ensures the `js` task is complete before
 // reloading browsers

@@ -1,41 +1,51 @@
 {
-    "name": "angular-substance-editor",
-    "version": "0.0.1",
-    "description": "AngularJS directive for Substance.io editor",
-    "keywords": [
-        "angular",
-        "substance-editor"
-    ],
-    "homepage": "https://github.com/thijsw/angular-substance-editor",
-    "bugs": "https://github.com/thijsw/angular-substance-editor/issues",
-    "author": {
-        "name": "Enrico Schwendig",
-        "email": "enrico.schwe@googlemail.com"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/thijsw/angular-substance-editor.git"
-    },
-    "license": "MIT",
-    "devDependencies": {
-        "ace-builds": "^1.2.2",
-        "browser-sync": "^2.14.0",
-        "browserify": "^10.2.4",
-        "font-awesome": "4.5.0",
-        "gulp": "^3.9.1",
-        "gulp-browserify": "^0.5.1",
-        "gulp-sass": "^2.3.2",
-        "gulp-uglify": "^2.0.0",
-        "through2": "^2.0.0",
-        "gulp-rename": "^1.2.2",
-        "node-sass": "3.x"
-    },
-    "dependencies": {
-        "babelify": "^7.3.0",
-        "lodash": "4.2.1",
-        "substance": "substance/substance#v1.0.0-beta.4"
-    },
-    "scripts": {
-        "bundle": "gulp"
-    }
+  "name": "angular-substance-editor",
+  "version": "0.0.1",
+  "description": "AngularJS directive for Substance.io editor",
+  "keywords": [
+    "angular",
+    "substance-editor"
+  ],
+  "homepage": "https://github.com/thijsw/angular-substance-editor",
+  "bugs": "https://github.com/thijsw/angular-substance-editor/issues",
+  "author": {
+    "name": "Enrico Schwendig",
+    "email": "enrico.schwe@googlemail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thijsw/angular-substance-editor.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "ace-builds": "^1.2.5",
+    "browser-sync": "^2.14.3",
+    "browserify": "^13.1.0",
+    "font-awesome": "^4.6.3",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-protractor": "^3.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0",
+    "node-sass": "^3.8.0",
+    "selenium-server-standalone-jar": "^2.53.1",
+    "through2": "^2.0.1",
+    "yargs": "^5.0.0",
+    "express": "^4.14.0"
+  },
+  "engines": {
+    "node": "^4.3"
+  },
+  "scripts": {
+    "gulp": "node node_modules/gulp/bin/gulp.js",
+    "test": "npm run gulp protractor",
+    "bundle": "gulp",
+    "postinstall": "webdriver-manager update"
+  },
+  "dependencies": {
+    "babelify": "^7.3.0",
+    "lodash": "4.2.1",
+    "substance": "substance/substance#v1.0.0-beta.4"
+  }
 }
