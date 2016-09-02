@@ -12,7 +12,9 @@ var gulp = require('gulp'),
     webdriver_update = require('gulp-protractor').webdriver_update,
     args = require('yargs').argv,
     express = require('express'),
-    http = require('http');
+    jasmine = require('gulp-jasmine');
+    http = require('http'),
+    KarmaServer = require('karma').Server;
 
 
 var config = require('./gulp/config');
@@ -57,6 +59,15 @@ gulp.task('protractor', ['webdriver_update', 'e2etests:server'], function(cb) {
 
 gulp.task('e2etests:server', function(cb) {
 	server.listen(9001, cb);
+});
+
+
+
+gulp.task('unittest', function (done) {
+    new KarmaServer({
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: true
+    }, function() { done(); }).start();
 });
 
 // Build setup ################################################################################
