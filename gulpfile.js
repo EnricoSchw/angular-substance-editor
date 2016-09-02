@@ -7,13 +7,13 @@ var gulp = require('gulp'),
     bower = require('gulp-bower'),
     rename = require('gulp-rename'),
     runSequence = require('run-sequence')
-    protractor = require('gulp-protractor').protractor,
+protractor = require('gulp-protractor').protractor,
     webdriver_standalone = require('gulp-protractor').webdriver_standalone,
     webdriver_update = require('gulp-protractor').webdriver_update,
     args = require('yargs').argv,
     express = require('express'),
     jasmine = require('gulp-jasmine');
-    http = require('http'),
+http = require('http'),
     KarmaServer = require('karma').Server;
 
 
@@ -33,41 +33,38 @@ gulp.task('webdriver_update', webdriver_update);
 gulp.task('webdriver_standalone', webdriver_standalone);
 
 // Setting up the test task
-gulp.task('protractor', ['webdriver_update', 'e2etests:server'], function(cb) {
+gulp.task('protractor', ['webdriver_update', 'e2etests:server'], function (cb) {
 
-    gulp.src(['tests/e2e/**/*.js'], { read:false })
-  		.pipe(protractor({
-  			configFile: './protractor.conf.js',
-  			args: ['--baseUrl', 'http://' + server.address().address + ':' + server.address().port]
-  		})).on('error', function(e) {
-  			server.close();
-  			if(isCI) {
-  				throw e;
-  			} else {
-  				console.log(e);
-  			}
-  			cb();
-  		}).on('end', function() {
-  			server.close();
-  			cb();
-  		});
-
-
+    gulp.src(['tests/e2e/**/*.js'], {read: false})
+        .pipe(protractor({
+            configFile: './protractor.conf.js',
+            args: ['--baseUrl', 'http://' + server.address().address + ':' + server.address().port]
+        })).on('error', function (e) {
+        server.close();
+        if (isCI) {
+            throw e;
+        } else {
+            console.log(e);
+        }
+        cb();
+    }).on('end', function () {
+        server.close();
+        cb();
+    });
 
 
 });
 
-gulp.task('e2etests:server', function(cb) {
-	server.listen(9001, cb);
+gulp.task('e2etests:server', function (cb) {
+    server.listen(9001, cb);
 });
-
 
 
 gulp.task('unittest', function (done) {
     new KarmaServer({
         configFile: __dirname + '/karma.conf.js',
         singleRun: true
-    }, function() { done(); }).start();
+    }, done).start();
 });
 
 // Build setup ################################################################################
@@ -120,8 +117,8 @@ gulp.task('sass', function () {
 });
 
 
-gulp.task('bower', function() {
-  return bower();
+gulp.task('bower', function () {
+    return bower();
 });
 
 gulp.task('build', function () {
