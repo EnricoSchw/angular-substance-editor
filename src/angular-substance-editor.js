@@ -19,3 +19,4 @@ angular.module('angular-substance-editor', [])
             //template: 'Name: {{customer.name}} Address: {{customer.address}}'
         };
     });
+
