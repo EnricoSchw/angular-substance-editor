@@ -64,7 +64,7 @@ gulp.task('unittest', function (done) {
     new KarmaServer({
         configFile: __dirname + '/karma.conf.js',
         singleRun: true
-    }, done).start();
+    }, done()).start();
 });
 
 // Build setup ################################################################################
