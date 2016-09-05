@@ -14,9 +14,12 @@ if (isDebug()) {
 
 module.exports = function (config) {
     config.set({
-        browsers: ['PhantomJS'],
+        browsers: ['Chrome'],
         frameworks: ['jasmine'],
         files: [
+            'bower_components/angular/angular.min.js',
+            'bower_components/angular-mocks/angular-mocks.js',
+            'dist/angular-substance-editor.js',
             'tests/spec/*.js'
         ],
 

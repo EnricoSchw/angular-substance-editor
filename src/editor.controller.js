@@ -24,13 +24,16 @@ Component.extend(App);
 
 module.exports = function (fixture, config) {
     var configurator = new Configurator(config);
-    window.onload = function () {
-        // Creates a ProseArticle based on the ProseEditorConfig
-        var doc = configurator.createArticle(fixture);
-        var documentSession = new DocumentSession(doc);
-        Component.mount(App, {
-            documentSession: documentSession,
-            configurator: configurator
-        }, 'body');
+
+    return {
+        render: function () {
+            // Creates a ProseArticle based on the ProseEditorConfig
+            var doc = configurator.createArticle(fixture);
+            var documentSession = new DocumentSession(doc);
+            Component.mount(App, {
+                documentSession: documentSession,
+                configurator: configurator
+            }, 'substanceEditor');
+        }
     };
 };

@@ -8,22 +8,27 @@ exports.config = {
     // The address of a running selenium server.
     'seleniumServerJar': 'node_modules/selenium-server-standalone-jar/jar/selenium-server-standalone-2.53.1.jar',
     //seleniumAddress: 'http://localhost:4444/wd/hub',
-  // Capabilities to be passed to the webdriver instance.
-  capabilities: {
-    'browserName': 'firefox'
-  },
+    // Capabilities to be passed to the webdriver instance.
+    capabilities: {
+        'browserName': 'chrome',
+        'chromeOptions': {
+            args: ['--no-sandbox']
+        }
+        //'phantomjs.binary.path': require('phantomjs-prebuilt').path,
+        //'phantomjs.ghostdriver.cli.args': ['--loglevel=DEBUG']
+    },
 
-  // Options to be passed to Jasmine-node.
-  jasmineNodeOpts: {
-    showColors: true,
-    defaultTimeoutInterval: 30000
-  },
+    // Options to be passed to Jasmine-node.
+    jasmineNodeOpts: {
+        showColors: true,
+        defaultTimeoutInterval: 30000
+    },
 
-  //directConnect: true,
-  onPrepare: function() {
+    //directConnect: true,
+    onPrepare: function () {
         browser.driver.manage().window().setSize(1280, 1024);
         jasmine.getEnv().addReporter(new HtmlReporter({
-         baseDirectory: '/tmp/screenshots'
-      }));
+            baseDirectory: '/tmp/screenshots'
+        }));
     }
 };

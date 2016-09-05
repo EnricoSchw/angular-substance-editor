@@ -19,7 +19,7 @@ http = require('http'),
 
 var config = require('./gulp/config');
 // The protractor task
-var server = http.createServer(express().use(express.static(__dirname + '/demo/')));
+var server = http.createServer(express().use(express.static(__dirname)));
 var isCI = args.type === 'ci';
 
 // Tests Setup: ################################################################################
@@ -60,7 +60,7 @@ gulp.task('e2etests:server', function (cb) {
 });
 
 
-gulp.task('unittest', function (done) {
+gulp.task('unittest', ['browserify'], function (done) {
     new KarmaServer({
         configFile: __dirname + '/karma.conf.js',
         singleRun: true
@@ -78,14 +78,18 @@ gulp.task('js', function () {
 });
 
 gulp.task('browserify', function () {
-    return gulp.src(config.jsSrc + '/angular-substance-editor.js')
+
+    gulp.src('./src/angular-substance-editor.js')
         .pipe(through2.obj(function (file, enc, next) {
+
             browserify(file.path)
                 .bundle(function (err, res) {
                     if (err) {
+                        console.log(err);
                         return next(err);
                     }
                     file.contents = res;
+
                     next(null, file);
                 });
         }))
@@ -96,8 +100,7 @@ gulp.task('browserify', function () {
         .pipe(uglify().on('error', function (err) {
             console.log(err);
         }))
-        .pipe(gulp.dest(config.dist));
-
+        .pipe(gulp.dest('./dist'));
 });
 
 // create a task that ensures the `js` task is complete before
@@ -131,7 +134,7 @@ gulp.task('serve', ['build'], function () {
 
     // Serve files from the root of this project
     browserSync.init({
-        server: "./demo"
+        server: "./"
     });
 
     gulp.watch("demo/scss/*.scss", ['sass']);
