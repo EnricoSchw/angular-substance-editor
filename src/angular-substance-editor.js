@@ -1,5 +1,5 @@
 'use strict';
-var proseExample = require('./editor.controller');
+var editorController = require('./editor.controller');
 var fixture = require('./fixture');
 var config = require('./config');
 
@@ -20,12 +20,10 @@ angular.module('angular-substance-editor', [])
                 optionsxx: '='
             },
             compile: function () {
-                var renderer = proseExample(fixture, config);
+                var editor = editorController(fixture, config);
                 return {
                     post: function (scope, element, attributes) {
-
-                        renderer.render();
-
+                        editor.render();
                     }
                 }
             },

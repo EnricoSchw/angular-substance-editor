@@ -1,5 +1,8 @@
 module.exports = {
     demoApp: 'demo',
     jsSrc: './src/*js',
-    dist: './dist'
+    dist: './dist',
+    protractorDevConfigFile: './protractor.dev.conf.js',
+    protractorCiConfigFile: './protractor.conf.js'
+
 };

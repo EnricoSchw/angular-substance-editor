@@ -4,6 +4,7 @@ var Configurator = require('substance/util/Configurator');
 var Component = require('substance/ui/Component');
 var ProseEditor = require('substance/packages/prose-editor/ProseEditor');
 var DocumentSession = require('substance/model/DocumentSession');
+var SaveHandler = require('./rts-editor/SaveHandler');
 
 function App() {
     App.super.apply(this, arguments);
@@ -24,7 +25,7 @@ Component.extend(App);
 
 module.exports = function (fixture, config) {
     var configurator = new Configurator(config);
-
+    configurator.setSaveHandler(SaveHandler);
     return {
         render: function () {
             // Creates a ProseArticle based on the ProseEditorConfig

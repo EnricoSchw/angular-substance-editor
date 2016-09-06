@@ -6,14 +6,14 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     bower = require('gulp-bower'),
     rename = require('gulp-rename'),
-    runSequence = require('run-sequence')
-protractor = require('gulp-protractor').protractor,
+    runSequence = require('run-sequence'),
+    protractor = require('gulp-protractor').protractor,
     webdriver_standalone = require('gulp-protractor').webdriver_standalone,
     webdriver_update = require('gulp-protractor').webdriver_update,
     args = require('yargs').argv,
     express = require('express'),
-    jasmine = require('gulp-jasmine');
-http = require('http'),
+    jasmine = require('gulp-jasmine'),
+    http = require('http'),
     KarmaServer = require('karma').Server;
 
 
@@ -35,9 +35,10 @@ gulp.task('webdriver_standalone', webdriver_standalone);
 // Setting up the test task
 gulp.task('protractor', ['webdriver_update', 'e2etests:server'], function (cb) {
 
+
     gulp.src(['tests/e2e/**/*.js'], {read: false})
         .pipe(protractor({
-            configFile: './protractor.conf.js',
+            configFile: (isCI) ? config.protractorCiConfigFile : config.protractorDevConfigFile,
             args: ['--baseUrl', 'http://' + server.address().address + ':' + server.address().port]
         })).on('error', function (e) {
         server.close();
