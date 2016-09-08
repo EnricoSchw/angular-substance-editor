@@ -1,5 +1,5 @@
 'use strict';
-var Configurator = require('../../util/Configurator');
+var Configurator = require('substance/util/Configurator');
 var SaveHandler = require('./SaveHandler');
 
 /*

@@ -7,30 +7,21 @@ var config = require('./config');
 angular.module('angular-substance-editor', [])
     .controller('Controller', ['$scope', function ($scope) {
 
-
-        $scope.customer = {
-            name: 'Naomi',
-            address: 'test'
-        };
     }])
-    .directive('substance', function () {
+    .directive('substance', ['SubstanceService', function (substanceService) {
+
         return {
             restrict: 'A',
             scope: {
                 optionsxx: '='
             },
-            compile: function () {
-                var editor = editorController(fixture, config);
-                return {
-                    post: function (scope, element, attributes) {
-                        editor.render();
-                    }
-                }
+            link: function (scope, element, attributes) {
+                var editor = editorController(substanceService, config);
+                editor.render();
+
             },
             template: '<substanceEditor></substanceEditor>'
         }
-    });
-
-
+    }]);
 
 

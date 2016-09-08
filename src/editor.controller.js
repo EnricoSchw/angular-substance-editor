@@ -1,10 +1,9 @@
 'use strict';
 
-var Configurator = require('substance/util/Configurator');
+var Configurator = require('./rts-editor/RtsEditorConfigurator');
 var Component = require('substance/ui/Component');
 var ProseEditor = require('substance/packages/prose-editor/ProseEditor');
 var DocumentSession = require('substance/model/DocumentSession');
-var SaveHandler = require('./rts-editor/SaveHandler');
 
 function App() {
     App.super.apply(this, arguments);
@@ -23,13 +22,15 @@ App.Prototype = function () {
 
 Component.extend(App);
 
-module.exports = function (fixture, config) {
+module.exports = function (substanceService, config) {
     var configurator = new Configurator(config);
-    configurator.setSaveHandler(SaveHandler);
+    var document = substanceService.loadDocument;
+    
+    configurator.setSaveHandler(substanceService);
     return {
         render: function () {
             // Creates a ProseArticle based on the ProseEditorConfig
-            var doc = configurator.createArticle(fixture);
+            var doc = configurator.createArticle(document);
             var documentSession = new DocumentSession(doc);
             Component.mount(App, {
                 documentSession: documentSession,
