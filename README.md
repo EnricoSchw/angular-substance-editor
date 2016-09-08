@@ -24,7 +24,7 @@ Then add `angular-substance-editor` as a dependency for your app:
 ```javascript
 angular.module('myApp', ['angular-substance-editor']);
 ```
-
+ 
 ## Documentation
 
 Use as an element:
@@ -37,15 +37,15 @@ Use as an element:
 <p substance></p>
 ```
 
-Implement and register an angular Service with Name `SubstanceService to load and Ssave Documents. The service have to implements a save method `saveDocument` and a load method `loadDocument`.
+Implement and register an angular Service with Name `SubstanceService` to load and Save Documents. The service have to implements a save method `saveDocument` and a load method `loadDocument`. Please see the example service for more.
 
 ## Examples
 
 ### In App
 
-Load this service after lad your app and the editor.
+Load this service after load your app and the editor.
 
-```js
+```javascript
 (function () {
     'use strict';
     angular
@@ -91,7 +91,6 @@ Load this service after lad your app and the editor.
     }
 })();
 ```
-
 
 ## Running the demo
 If you want to view the included demo, you have to run `bower` first in order to retrieve the dependencies. Then run `gulp`
