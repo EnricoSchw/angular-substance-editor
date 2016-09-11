@@ -1,6 +1,5 @@
 'use strict';
 var editorController = require('./editor.controller');
-var fixture = require('./fixture');
 var config = require('./config');
 
 

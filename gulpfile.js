@@ -13,8 +13,7 @@ var gulp = require('gulp'),
     args = require('yargs').argv,
     express = require('express'),
     jasmine = require('gulp-jasmine'),
-    http = require('http'),
-    KarmaServer = require('karma').Server;
+    http = require('http');
 
 
 var config = require('./gulp/config');
@@ -61,22 +60,7 @@ gulp.task('e2etests:server', function (cb) {
 });
 
 
-gulp.task('unittest', ['browserify'], function (done) {
-    new KarmaServer({
-        configFile: __dirname + '/karma.conf.js',
-        singleRun: true
-    }, done()).start();
-});
-
 // Build setup ################################################################################
-
-// process JS files and return the stream.
-gulp.task('js', function () {
-    return gulp.src([config.jsSrc, './node_modules'])
-        .pipe(browserify())
-        .pipe(uglify())
-        .pipe(gulp.dest(config.dist));
-});
 
 gulp.task('browserify', function () {
 

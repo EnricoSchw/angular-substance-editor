@@ -98,6 +98,5 @@ If you want to view the included demo, you have to run `bower` first in order to
 
 ## Running the test
 
-Integration test run: `gulp test` or `npm test` for ci
-Unit tests run: `gulp unittest` or `npm run utest` for ci
+Integration test run: `gulp protractor` or `npm test` for ci
 

@@ -1,68 +1,60 @@
 {
-    "name": "angular-substance-editor",
-    "version": "0.0.1",
-    "description": "AngularJS directive for Substance.io editor",
-    "keywords": [
-        "angular",
-        "substance-editor"
-    ],
-    "homepage": "https://github.com/thijsw/angular-substance-editor",
-    "bugs": "https://github.com/thijsw/angular-substance-editor/issues",
-    "author": {
-        "name": "Enrico Schwendig",
-        "email": "enrico.schwe@googlemail.com"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/thijsw/angular-substance-editor.git"
-    },
-    "license": "MIT",
-    "devDependencies": {
-        "ace-builds": "^1.2.5",
-        "browser-sync": "^2.14.3",
-        "browserify": "^13.1.0",
-        "express": "^4.14.0",
-        "font-awesome": "^4.6.3",
-        "gulp": "^3.9.1",
-        "gulp-bower": "0.0.13",
-        "gulp-browserify": "^0.5.1",
-        "gulp-jasmine": "^2.4.1",
-        "gulp-protractor": "^3.0.0",
-        "gulp-rename": "^1.2.2",
-        "gulp-sass": "^2.3.2",
-        "gulp-uglify": "^2.0.0",
-        "jasmine": "^2.5.0",
-        "karma": "^1.2.0",
-        "jasmine-core": "2.4.1",
-        "jasmine-reporters": "2.1.1",
-        "karma": "0.13.22",
-        "karma-chrome-launcher": "1.0.1",
-        "karma-coverage": "1.0.0",
-        "karma-jasmine": "1.0.2",
-        "karma-junit-reporter": "1.0.0",
-        "karma-phantomjs-launcher": "1.0.0",
-        "karma-script-launcher": "1.0.0",
-        "ng-html2js": "^3.0.0",
-        "node-sass": "^3.8.0",
-        "phantomjs-prebuilt": "2.1.7",
-        "protractor-html-screenshot-reporter": "0.0.21",
-        "run-sequence": "^1.2.2",
-        "selenium-server-standalone-jar": "^2.53.1",
-        "through2": "^2.0.1",
-        "yargs": "^5.0.0"
-    },
-    "engines": {
-        "node": "^4.3"
-    },
-    "scripts": {
-        "gulp": "node node_modules/gulp/bin/gulp.js --type ci",
-        "test": "npm run gulp protractor",
-        "utest": "npm run gulp unittest",
-        "bundle": "gulp"
-    },
-    "dependencies": {
-        "babelify": "^7.3.0",
-        "lodash": "4.2.1",
-        "substance": "substance/substance#v1.0.0-beta.4"
-    }
+  "name": "angular-substance-editor",
+  "version": "0.0.1",
+  "description": "AngularJS directive for Substance.io editor",
+  "keywords": [
+    "angular",
+    "substance-editor"
+  ],
+  "homepage": "https://github.com/thijsw/angular-substance-editor",
+  "bugs": "https://github.com/thijsw/angular-substance-editor/issues",
+  "author": {
+    "name": "Enrico Schwendig",
+    "email": "enrico.schwe@googlemail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thijsw/angular-substance-editor.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "ace-builds": "^1.2.5",
+    "browser-sync": "^2.14.3",
+    "browserify": "^13.1.0",
+    "express": "^4.14.0",
+    "font-awesome": "^4.6.3",
+    "gulp": "^3.9.1",
+    "gulp-bower": "0.0.13",
+    "gulp-browserify": "^0.5.1",
+    "gulp-jasmine": "^2.4.1",
+    "gulp-protractor": "^3.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0",
+    "jasmine": "^2.5.0",
+    "jasmine-core": "2.4.1",
+    "jasmine-reporters": "2.1.1",
+    "ng-html2js": "^3.0.0",
+    "node-sass": "^3.8.0",
+    "phantomjs-prebuilt": "2.1.7",
+    "protractor-browser-logs": "^1.0.295",
+    "protractor-html-screenshot-reporter": "0.0.21",
+    "run-sequence": "^1.2.2",
+    "selenium-server-standalone-jar": "^2.53.1",
+    "through2": "^2.0.1",
+    "yargs": "^5.0.0"
+  },
+  "engines": {
+    "node": "^4.3"
+  },
+  "scripts": {
+    "gulp": "node node_modules/gulp/bin/gulp.js --type ci",
+    "test": "npm run gulp protractor",
+    "bundle": "gulp"
+  },
+  "dependencies": {
+    "babelify": "^7.3.0",
+    "lodash": "4.2.1",
+    "substance": "substance/substance#v1.0.0-beta.4"
+  }
 }

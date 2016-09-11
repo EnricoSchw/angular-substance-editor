@@ -27,7 +27,7 @@
                 tx.create({
                     id: 'p1',
                     type: 'paragraph',
-                    content: "Enrico Insert a new image using the image tool."
+                    content: "Insert a new image using the image tool."
                 });
                 body.show('p1');
 
