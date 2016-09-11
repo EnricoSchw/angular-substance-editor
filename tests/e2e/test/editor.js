@@ -54,15 +54,15 @@ describe('The Editor', function () {
 
         it('should enable if text change', function () {
             container.getContentOfParagraphElement(2).click();
+            browser.sleep(200);
             browser.actions().sendKeys('a').perform();
+            browser.sleep(200);
             expect(toolBar.getSaveButton().isEnabled()).toBe(true);
         });
 
         it('should activate save handler', function () {
             toolBar.getSaveButton().click();
-
             logs.expect(/Save from Angular!/);
-            //logs.verify();
         });
     });
 
