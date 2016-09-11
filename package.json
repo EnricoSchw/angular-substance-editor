@@ -1,6 +1,6 @@
 {
   "name": "angular-substance-editor",
-  "version": "1.0.0-beta",
+  "version": "1.0.1-beta",
   "description": "AngularJS directive for Substance.io editor",
   "keywords": [
     "angular",
