@@ -27,6 +27,7 @@ exports.config = {
     //directConnect: true,
     onPrepare: function () {
         browser.driver.manage().window().setSize(1280, 1024);
+        browser.ignoreSynchronization = true;
         jasmine.getEnv().addReporter(new HtmlReporter({
             baseDirectory: '/tmp/screenshots'
         }));
