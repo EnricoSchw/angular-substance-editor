@@ -100,3 +100,13 @@ If you want to view the included demo, you have to run `bower` first in order to
 
 Integration test run: `gulp protractor` or `npm test` for ci
 
+## Create new bower version
+
+All valid semver tags on git@github.com:EnricoSchw/angular-substance-editor.git will be available as versions.
+To publish a new version, just release a valid semver tag. For this
+
+  1. Change Version in `bower.json` and `package.json`.
+  2. Tag the current commit `git tag -a v1.0.1-beta -m 'Version 1.0.1-beta'`.
+  3. Push new Tag `git push origin v1.0.1-beta`.
+
+Run bower info angular-substance-editor to list the available versions.
