@@ -54,9 +54,10 @@ describe('The Editor', function () {
 
         it('should enable if text change', function () {
             var el = container.getContentOfParagraphElement(2).click();
-            el.sendKeys('b');
-            //browser.actions().sendKeys('a').perform();
-            expect(toolBar.getSaveButton().isEnabled()).toBe(true);
+            browser.actions().sendKeys('a').perform();
+            expect(toolBar.getSaveButton().getAttribute('disabled')).toEqual('disabled');
+            //expect(toolBar.getSaveButton().isEnabled()).toBe(true);
+
         });
 
         it('should activate save handler', function () {
