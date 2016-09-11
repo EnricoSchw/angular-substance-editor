@@ -53,8 +53,9 @@ describe('The Editor', function () {
         });
 
         it('should enable if text change', function () {
-            container.getContentOfParagraphElement(2).click();
-            browser.actions().sendKeys('a').perform();
+            var el = container.getContentOfParagraphElement(2).click();
+            el.sendKeys('b');
+            //browser.actions().sendKeys('a').perform();
             expect(toolBar.getSaveButton().isEnabled()).toBe(true);
         });
 
