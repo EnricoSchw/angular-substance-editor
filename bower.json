@@ -1,14 +1,18 @@
 {
   "name": "angular-substance-editor",
-  "version": "0.0.1",
+  "version": "1.0.1-beta",
   "main": "./dist/angular-substance-editor.js",
   "ignore": [
     "**/.*",
     "*.md",
     "gulpfile.js",
     "package.json",
+    "protractor.conf.js",
+    "protractor.dev.conf.js",
     "src",
-    "demo"
+    "demo",
+    "index.html",
+    "favicon.ico"
   ],
   "dependencies": {
     "angular": "^1.5.8"
