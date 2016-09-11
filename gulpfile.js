@@ -6,20 +6,19 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     bower = require('gulp-bower'),
     rename = require('gulp-rename'),
-    runSequence = require('run-sequence')
-protractor = require('gulp-protractor').protractor,
+    runSequence = require('run-sequence'),
+    protractor = require('gulp-protractor').protractor,
     webdriver_standalone = require('gulp-protractor').webdriver_standalone,
     webdriver_update = require('gulp-protractor').webdriver_update,
     args = require('yargs').argv,
     express = require('express'),
-    jasmine = require('gulp-jasmine');
-http = require('http'),
-    KarmaServer = require('karma').Server;
+    jasmine = require('gulp-jasmine'),
+    http = require('http');
 
 
 var config = require('./gulp/config');
 // The protractor task
-var server = http.createServer(express().use(express.static(__dirname + '/demo/')));
+var server = http.createServer(express().use(express.static(__dirname)));
 var isCI = args.type === 'ci';
 
 // Tests Setup: ################################################################################
@@ -35,9 +34,10 @@ gulp.task('webdriver_standalone', webdriver_standalone);
 // Setting up the test task
 gulp.task('protractor', ['webdriver_update', 'e2etests:server'], function (cb) {
 
+
     gulp.src(['tests/e2e/**/*.js'], {read: false})
         .pipe(protractor({
-            configFile: './protractor.conf.js',
+            configFile: (isCI) ? config.protractorCiConfigFile : config.protractorDevConfigFile,
             args: ['--baseUrl', 'http://' + server.address().address + ':' + server.address().port]
         })).on('error', function (e) {
         server.close();
@@ -60,32 +60,21 @@ gulp.task('e2etests:server', function (cb) {
 });
 
 
-gulp.task('unittest', function (done) {
-    new KarmaServer({
-        configFile: __dirname + '/karma.conf.js',
-        singleRun: true
-    }, done()).start();
-});
-
 // Build setup ################################################################################
 
-// process JS files and return the stream.
-gulp.task('js', function () {
-    return gulp.src([config.jsSrc, './node_modules'])
-        .pipe(browserify())
-        .pipe(uglify())
-        .pipe(gulp.dest(config.dist));
-});
-
 gulp.task('browserify', function () {
-    return gulp.src(config.jsSrc + '/angular-substance-editor.js')
+
+    gulp.src('./src/angular-substance-editor.js')
         .pipe(through2.obj(function (file, enc, next) {
+
             browserify(file.path)
                 .bundle(function (err, res) {
                     if (err) {
+                        console.log(err);
                         return next(err);
                     }
                     file.contents = res;
+
                     next(null, file);
                 });
         }))
@@ -96,8 +85,7 @@ gulp.task('browserify', function () {
         .pipe(uglify().on('error', function (err) {
             console.log(err);
         }))
-        .pipe(gulp.dest(config.dist));
-
+        .pipe(gulp.dest('./dist'));
 });
 
 // create a task that ensures the `js` task is complete before
@@ -131,7 +119,7 @@ gulp.task('serve', ['build'], function () {
 
     // Serve files from the root of this project
     browserSync.init({
-        server: "./demo"
+        server: "./"
     });
 
     gulp.watch("demo/scss/*.scss", ['sass']);

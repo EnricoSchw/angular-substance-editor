@@ -1,22 +1,26 @@
 'use strict';
-var proseExample = require('./editor.controller');
-var fixture = require('./fixture');
+var editorController = require('./editor.controller');
 var config = require('./config');
 
 
 angular.module('angular-substance-editor', [])
     .controller('Controller', ['$scope', function ($scope) {
 
-        proseExample(fixture, config);
-
-        $scope.customer = {
-            name: 'Naomi',
-            address: 'test'
-        };
     }])
-    .directive('substance', function () {
+    .directive('substance', ['SubstanceService', function (substanceService) {
+
         return {
-            //template: 'Name: {{customer.name}} Address: {{customer.address}}'
-        };
-    });
+            restrict: 'A',
+            scope: {
+                optionsxx: '='
+            },
+            link: function (scope, element, attributes) {
+                var editor = editorController(substanceService, config);
+                editor.render();
+
+            },
+            template: '<substanceEditor></substanceEditor>'
+        }
+    }]);
+
 
