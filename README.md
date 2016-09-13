@@ -50,7 +50,7 @@ Load this service after load your app and the editor.
     'use strict';
     angular
         .module('your module')
-        .factory('SubstanceService', `);
+        .factory('SubstanceService', SubstanceService);
 
     /**
      * Implement this service to interact with the editor
@@ -69,7 +69,6 @@ Load this service after load your app and the editor.
 
             // handler to load Documents in Editor
             loadDocument: function (tx) {
-                //return function (tx) {
                 var body = tx.get('body');
 
                 tx.create({
@@ -85,7 +84,6 @@ Load this service after load your app and the editor.
                     content: "Please note that images are not actually uploaded in this example. You would need to provide a custom file client that talks to an image store. See FileClientStub which reveals the API you have to implement."
                 });
                 body.show('p2');
-                //};
             }
         };
     }
