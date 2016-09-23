@@ -1,6 +1,6 @@
 {
   "name": "angular-substance-editor",
-  "version": "1.0.1-beta",
+  "version": "1.0.2-beta",
   "main": "./dist/angular-substance-editor.js",
   "ignore": [
     "**/.*",
@@ -12,7 +12,10 @@
     "src",
     "demo",
     "index.html",
-    "favicon.ico"
+    "favicon.ico",
+    "gulp",
+    ".bower.json",
+    "tests"
   ],
   "dependencies": {
     "angular": "^1.5.8"

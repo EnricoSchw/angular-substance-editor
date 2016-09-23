@@ -97,10 +97,10 @@ gulp.task('js-watch', ['browserify'], function (done) {
 
 // Compile sass into CSS & auto-inject into browsers
 gulp.task('sass', function () {
-    return gulp.src("./demo/sass/*.scss")
+    return gulp.src("./dist/sass/*.scss")
         .pipe(sass().on('error', sass.logError))
-        .pipe(rename('app.css'))
-        .pipe(gulp.dest("./demo/css"))
+        .pipe(rename('angular-substance-editor.css'))
+        .pipe(gulp.dest("./dist/css"))
         .pipe(browserSync.stream());
 });
 
@@ -122,20 +122,19 @@ gulp.task('serve', ['build'], function () {
         server: "./"
     });
 
-    gulp.watch("demo/scss/*.scss", ['sass']);
-    gulp.watch("demo/*.html").on('change', browserSync.reload);
+    gulp.watch("dist/sass/*.scss", ['sass']);
+    gulp.watch("./*.html").on('change', browserSync.reload);
+    gulp.watch("./dist/css/*.css").on('change', browserSync.reload);
 
     // add browserSync.reload to the tasks array to make
     // all browsers reload after tasks are complete.
-    gulp.watch("./src/*.js", ['js-watch']);
+    gulp.watch("./src/**/*.js", ['js-watch']);
 });
 
 gulp.task('assets', function () {
 
     gulp.src('node_modules/font-awesome/fonts/*')
-        .pipe(gulp.dest('./demo/fonts'));
-    gulp.src('node_modules/ace-builds/src-min/*')
-        .pipe(gulp.dest('./demo/ace'));
+        .pipe(gulp.dest('./dist/fonts'));
 });
 
 gulp.task('default', ['serve']);
