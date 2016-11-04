@@ -1,8 +1,12 @@
 language: node_js
 addons:
-  firefox: "45.0"
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
 node_js:
-  - "6.9.1"
+  - "6"
 sudo: false
 before_install: npm install -g gulp
 install: npm install
