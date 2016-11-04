@@ -108,7 +108,7 @@ You can create a new library file with `gulp build`
 
 ### Create new bower version
 
-All valid semver tags on git@github.com:EnricoSchw/angular-substance-editor.git will be available as versions.
+All valid semver tags on `git@github.com:EnricoSchw/angular-substance-editor.git` will be available as versions.
 To publish a new version, just release a valid semver tag. For this
 
   1. Change Version in `bower.json` and `package.json`.
