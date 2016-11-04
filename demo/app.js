@@ -1,7 +1,6 @@
 'use strict';
 
 angular.module('demo', ['angular-substance-editor'])
-
     .controller('demo', ['$scope', function ($scope) {
 
         $scope.text =

@@ -1,6 +1,8 @@
 var gulp = require('gulp'),
     browserSync = require('browser-sync').create(),
     browserify = require('browserify'),
+    babelify = require('babelify'),
+    path = require('path'),
     uglify = require('gulp-uglify'),
     through2 = require('through2'),
     sass = require('gulp-sass'),
@@ -62,21 +64,23 @@ gulp.task('e2etests:server', function (cb) {
 
 // Build setup ################################################################################
 
+
 gulp.task('browserify', function () {
 
     gulp.src('./src/angular-substance-editor.js')
         .pipe(through2.obj(function (file, enc, next) {
+            var bundler = browserify(file.path);
+            bundler.transform(babelify, {presets: ["es2015"]});
 
-            browserify(file.path)
-                .bundle(function (err, res) {
-                    if (err) {
-                        console.log(err);
-                        return next(err);
-                    }
-                    file.contents = res;
+            bundler.bundle(function (err, res) {
+                if (err) {
+                    console.log(err);
+                    return next(err);
+                }
+                file.contents = res;
 
-                    next(null, file);
-                });
+                next(null, file);
+            });
         }))
         .on('error', function (error) {
             console.log(error.stack);
