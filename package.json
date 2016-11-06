@@ -50,7 +50,7 @@
     "node": "^6.9.1"
   },
   "scripts": {
-    "gulp": "node node_modules/gulp/bin/gulp.js --type ci",
+    "gulp": "node node_modules/gulp/bin/gulp.js",
     "test": "npm run gulp protractor",
     "bundle": "gulp"
   },
