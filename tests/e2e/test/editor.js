@@ -24,7 +24,7 @@ describe('The Editor', function () {
     it('should loaded', function () {
         browser.driver.get('http://localhost:9001/index.html');
         browser.waitForAngular();
-
+        browser.wait(started, 5 * 1000, 'Server should start within 5 seconds');
         var editor = element(by.className('sc-prose-editor'));
         expect(editor.isPresent()).toBe(true);
     });
