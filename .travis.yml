@@ -1,16 +1,15 @@
 language: node_js
 addons:
-  firefox: "45.0"
+  firefox: "48.0"
 node_js:
-  - "4.4.3"
+  - "6"
 sudo: false
 before_install: npm install -g gulp
 install: npm install
 before_script:
-    - 'export CHROME_BIN=chromium-browser'
     - 'export DISPLAY=:99.0'
     - 'sh -e /etc/init.d/xvfb start'
-    - 'gulp build'
+    -  sleep 3
 notifications:
   webhooks:
     on_success: change  # options: [always|never|change] default: always

@@ -1,7 +1,7 @@
 // at the top of the test spec:
 var browserLogs = require('protractor-browser-logs'),
- ToolBar = require('./../helper/toolBar'),
-Container = require('./../helper/container');
+    ToolBar = require('./../helper/toolBar'),
+    Container = require('./../helper/container');
 
 
 describe('The Editor', function () {
@@ -24,7 +24,7 @@ describe('The Editor', function () {
     it('should loaded', function () {
         browser.driver.get('http://localhost:9001/index.html');
         browser.waitForAngular();
-
+        browser.wait(started, 5 * 1000, 'Server should start within 5 seconds');
         var editor = element(by.className('sc-prose-editor'));
         expect(editor.isPresent()).toBe(true);
     });
@@ -49,7 +49,7 @@ describe('The Editor', function () {
         });
 
         it('should switched off', function () {
-             expect(toolBar.getSaveButton().isEnabled()).toBe(false);
+            expect(toolBar.getSaveButton().isEnabled()).toBe(false);
         });
 
         it('should activate save handler', function () {

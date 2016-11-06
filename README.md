@@ -27,14 +27,16 @@ angular.module('myApp', ['angular-substance-editor']);
  
 ## Documentation
 
-Use as an element:
+Use as an Editor:
+
 ```html
-<substance></substance>
+<substance type="editor"></substance>
 ```
 
-...or attribute:
+...or use the Viewer:
+
 ```html
-<p substance></p>
+<substance type="viewer"></substance>
 ```
 
 Implement and register an angular Service with Name `SubstanceService` to load and Save Documents. The service have to implements a save method `saveDocument` and a load method `loadDocument`. Please see the example service for more.
@@ -98,9 +100,15 @@ If you want to view the included demo, you have to run `bower` first in order to
 
 Integration test run: `gulp protractor` or `npm test` for ci
 
-## Create new bower version
 
-All valid semver tags on git@github.com:EnricoSchw/angular-substance-editor.git will be available as versions.
+## Development
+
+You can create a new library file with `gulp build`
+
+
+### Create new bower version
+
+All valid semver tags on `git@github.com:EnricoSchw/angular-substance-editor.git` will be available as versions.
 To publish a new version, just release a valid semver tag. For this
 
   1. Change Version in `bower.json` and `package.json`.
@@ -108,3 +116,4 @@ To publish a new version, just release a valid semver tag. For this
   3. Push new Tag `git push origin v1.0.1-beta`.
 
 Run bower info angular-substance-editor to list the available versions.
+
