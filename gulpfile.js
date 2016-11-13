@@ -6,6 +6,7 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     through2 = require('through2'),
     sass = require('gulp-sass'),
+    cssimport = require("gulp-cssimport"),
     bower = require('gulp-bower'),
     rename = require('gulp-rename'),
     runSequence = require('run-sequence'),
@@ -103,6 +104,7 @@ gulp.task('js-watch', ['browserify'], function (done) {
 gulp.task('sass', function () {
     return gulp.src("./dist/sass/*.scss")
         .pipe(sass().on('error', sass.logError))
+        .pipe(cssimport({matchPattern: "!./css/_index.css"}))
         .pipe(rename('angular-substance-editor.css'))
         .pipe(gulp.dest("./dist/css"))
         .pipe(browserSync.stream());
