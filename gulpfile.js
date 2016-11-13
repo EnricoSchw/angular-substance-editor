@@ -6,6 +6,8 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     through2 = require('through2'),
     sass = require('gulp-sass'),
+    cssimport = require("gulp-cssimport"),
+    cleanCSS = require('gulp-clean-css'),
     bower = require('gulp-bower'),
     rename = require('gulp-rename'),
     runSequence = require('run-sequence'),
@@ -103,9 +105,17 @@ gulp.task('js-watch', ['browserify'], function (done) {
 gulp.task('sass', function () {
     return gulp.src("./dist/sass/*.scss")
         .pipe(sass().on('error', sass.logError))
+        .pipe(cssimport({matchPattern: "!./css/_index.css"}))
         .pipe(rename('angular-substance-editor.css'))
         .pipe(gulp.dest("./dist/css"))
         .pipe(browserSync.stream());
+});
+
+gulp.task('minify-css', function () {
+    return gulp.src('./dist/css/angular-substance-editor.css')
+        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(rename('angular-substance-editor-min.css'))
+        .pipe(gulp.dest('dist/css'));
 });
 
 
@@ -114,7 +124,7 @@ gulp.task('bower', function () {
 });
 
 gulp.task('build', function () {
-    runSequence('bower', 'browserify', 'sass', 'assets');
+    runSequence('bower', 'browserify', 'sass', 'minify-css', 'assets');
 });
 
 

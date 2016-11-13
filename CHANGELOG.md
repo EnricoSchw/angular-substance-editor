@@ -1,8 +1,9 @@
 ## Beta 2
 
-- Substance Beta 5
-- Add Modul Editor and Viewer
-- Update to node 6
+- Update to Substance library beta 5
+- Add optional attribute 'type' for Editor or Viewer
+- Update to javascript node 6
+- Add a minimized angular-substnace-editor CSS
 
 ## Beta 1
 

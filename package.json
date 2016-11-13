@@ -28,6 +28,8 @@
     "gulp": "^3.9.1",
     "gulp-bower": "0.0.13",
     "gulp-browserify": "^0.5.1",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-cssimport": "^4.0.1",
     "gulp-jasmine": "^2.4.1",
     "gulp-protractor": "^3.0.0",
     "gulp-rename": "^1.2.2",
@@ -60,7 +62,15 @@
     "substance": "^1.0.0-beta.5"
   },
   "browserify": {
-    "transform": [["babelify", { "presets": ["es2015"] }]]
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
+    ]
   }
 }
-
