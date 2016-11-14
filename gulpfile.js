@@ -88,7 +88,10 @@ gulp.task('browserify', function () {
             console.log(error.stack);
             this.emit('end');
         })
-        .pipe(uglify().on('error', function (err) {
+        .pipe(uglify({
+            mangle: false,
+            compress: true
+        }).on('error', function (err) {
             console.log(err);
         }))
         .pipe(gulp.dest('./dist'));
