@@ -1,3 +1,5 @@
+'use strict';
+
 import Editor from "./package/editor/Editor";
 import Viewer from "./package/viewer/Viewer";
 
