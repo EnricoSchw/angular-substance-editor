@@ -89,7 +89,7 @@ gulp.task('browserify', function () {
             this.emit('end');
         })
         .pipe(uglify({
-            mangle: true,
+            mangle: false,
             compress: true
         }).on('error', function (err) {
             console.log(err);
